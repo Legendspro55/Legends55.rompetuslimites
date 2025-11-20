@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGENDS | Rompe tus Límites</title>
+    <meta name="description" content="Legends: Comunidad de alto rendimiento. Trading, Mentalidad y Tecnología.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        legendsGold: '#F59E0B', // Ámbar dorado
+                        legendsDark: '#050505', 
+                        legendsCard: '#141414',
+                        legendsText: '#EDEDED',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                        hero: ['Anton', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                        'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)"
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 1s ease-out',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #050505; 
+            color: #EDEDED; 
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Tech Grid Background */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        ::selection {
+            background: #F59E0B;
+            color: #000;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F59E0B;
+        }
+        
+        /* Gold Text Effect */
+        .gold-text {
+            background: linear-gradient(to bottom, #FCD34D, #F59E0B, #B45309);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Epic Button */
+        .epic-button {
+            background: linear-gradient(110deg, #B45309 0%, #F59E0B 25%, #FCD34D 50%, #F59E0B 75%, #B45309 100%);
+            background-size: 200% auto;
+            color: #050505;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: shine 3s linear infinite;
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .epic-button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+            color: #000;
+        }
+
+        /* Legend Card / Glassmorphism */
+        .legend-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .legend-card:hover {
+            border-color: #F59E0B;
+            background: rgba(20, 20, 20, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+        .legend-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 0%;
+            background: #F59E0B;
+            transition: 0.4s ease;
+            z-index: 2;
+        }
+        .legend-card:hover::before {
+            height: 100%;
+        }
+        
+        /* Utility: Text Shadows */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .text-glow-gold {
+            text-shadow: 0 0 20px rgba(245,158,11,0.4);
+        }
+
+        /* Marquee Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: scroll 50s linear infinite;
+        }
+        .animate-marquee-reverse {
+            animation: scroll 50s linear infinite reverse;
+        }
+        .pause-on-hover:hover {
+            animation-play-state: paused;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+<body class="antialiased bg-noise">
+    <div id="root"></div>
+</body>
+</html>
